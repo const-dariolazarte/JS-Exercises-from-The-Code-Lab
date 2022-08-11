@@ -7,7 +7,7 @@ function minutesSeconds(minutes) {
     // minutesSeconds(5) => 300
     // minutesSeconds(3) => 180
     // Code:
-    
+    return minutes * 60;
 }
 
 function sameLength(string1, string2) {
@@ -17,7 +17,7 @@ function sameLength(string1, string2) {
     // sameLength('Cintia', 'Rafael') => true
     // sameLength('Vanesa', 'Chayanne') => false
     // Code:
-
+    return string1.length === string2.length;
 }
 
 function sayHello(name, age) {
@@ -28,7 +28,7 @@ function sayHello(name, age) {
     // sayHello('Ramiro', 28) => 'Hi, my name is Ramiro. I am 28 years old.'
     // INTENTEN HACERLO CON BACKTICKS
     // Code:
-
+    return `Hi, my name is ${name}. I am ${age} years old.`;
 }
 
 function arraySum(array) {
@@ -39,7 +39,11 @@ function arraySum(array) {
     // arraySum([3, 4, 1]) => 8
     // Code:
     // NO HAGAN TRAMPA, NO VALE USAR REDUCE
-
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum;
 }
 
 function findInArray(array, number) {
@@ -49,7 +53,7 @@ function findInArray(array, number) {
     // findInArray([5, 2, 4, 5], 2) => true
     // findInArray([3, 4, 1], 2) => false
     // Code:
-
+    return array.includes(number);
 }
 
 function average(array) {
@@ -59,7 +63,7 @@ function average(array) {
     // average([1,2,3]) => 2
     // average([10, 20, 3]) => 11
     // Code:
-
+    return array.reduce((acc, elem) => (acc + elem), 0) / array.length;
 }
 
 function randomNumbers(number) {
@@ -69,7 +73,13 @@ function randomNumbers(number) {
     // randomNumbers(5); => [23, 11, 4, 76, 30]
     // randomNumbers(3); => [3, 54, 18]
     // Code:
+    const array = [];
 
+    for (let i = 0; i < number; i++) {
+        array.push(Math.floor(Math.random() * 101));
+    }
+
+    return array
 }
 
 function triangleArea(base, height) {
@@ -78,7 +88,7 @@ function triangleArea(base, height) {
     // ex:
     // triangleArea(5, 10); => 25
     // triangleArea(3, 20); => 30
-
+    return base * height / 2;
 }
 
 function isVowel(letter) {
@@ -89,7 +99,9 @@ function isVowel(letter) {
     // ex:
     // isVowel('a') => 'Is vowel';
     // isVowel(6) => 'Is not vowel';
-
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    if (typeof letter !== 'string' || letter.length > 1) return "Incorrect data";
+    return vowels.includes(letter) ? 'Is vowel' : 'Is not vowel';
 }
 
 function findTheWord(string) {
@@ -99,7 +111,7 @@ function findTheWord(string) {
     // findTheWord('welcome to viseven') => true;
     // findTheWord('hi, my name is Agustin') => false;
     // Code:
-
+    return string.includes('viseven');
 }
 
 function createObject(name, surname, age, city) {
@@ -113,7 +125,12 @@ function createObject(name, surname, age, city) {
     //     city: 'Cordoba'
     // }
     // Code:
-
+    return {
+        name: name,
+        surname: surname,
+        age: age,
+        city: city
+    }
 }
 
 function highestRating(arr) {
@@ -129,7 +146,8 @@ function highestRating(arr) {
     //
     // highestRating(players) => 'The best player is Soledad, with 9999 points.'
     // Code:
-
+    arr.sort((a, b) => b.rating - a.rating)[0];
+    return `The best player is ${arr[0].name}, with ${arr[0].rating} points.`;
 }
 
 function objectKeys(obj) {
@@ -145,7 +163,11 @@ function objectKeys(obj) {
     //
     // objectKeys(employee) => ['name', 'age', 'city', 'company']
     // Code:
-
+    const array = [];
+    for (const key in obj) {
+        array.push(key);
+    }
+    return array;
 }
 
 function showRespectToRiquelme(arr) {
@@ -175,9 +197,13 @@ function showRespectToRiquelme(arr) {
     //   { name: 'Simon'},
     // ]
     // Code:
-    
+    for (const index of arr) {
+        if (index.name === "Riquelme") {
+            index.respect = 'You are the best';
+        }
+    }
+    return arr;
 }
-
 // ---------------------------------------------------------------------------------------------------------------
 // do not touch
 
